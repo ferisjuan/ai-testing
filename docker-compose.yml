@@ -1,0 +1,17 @@
+version: "3"
+services:
+  openai:
+    image: python:3.11.3
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - SCRIPT=iterative_prompt_development.py
+      - OPENAI_API_KEY=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
+    ports:
+      - "8000:8000"
+    restart: always
+    command: python ${SCRIPT}
+    build:
+      context: .
+      dockerfile: Dockerfile
